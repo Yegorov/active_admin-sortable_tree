@@ -22,6 +22,7 @@ module ActiveAdmin::SortableTree
       config.paginate = false
 
       collection_action :sort, :method => :post do
+        return unless authorized?(:sort, resource_class)
         resource_name = ActiveAdmin::SortableTree::Compatibility.normalized_resource_name(active_admin_config.resource_name)
 
 
